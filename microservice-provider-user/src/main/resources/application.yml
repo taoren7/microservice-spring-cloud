@@ -10,6 +10,8 @@ spring:
     platform: h2
     schema: classpath:schema.sql
     data: classpath:data.sql
+  application:
+    name: microservice-provider-user
 logging:
   level:
     root: info
@@ -17,3 +19,14 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
     org.hibernate.type.descriptor.sql.BasicExtractor: trace
     cn.allen: debug
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://user:password123@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+

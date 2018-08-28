@@ -1,0 +1,20 @@
+server:
+  port: 8010
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://user:password123@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+spring:
+  application:
+    name: microservice-consumer-movie-ribbon-properties-customizing
+microservice-provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+

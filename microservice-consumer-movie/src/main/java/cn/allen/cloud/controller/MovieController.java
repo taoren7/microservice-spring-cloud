@@ -17,7 +17,7 @@ public class MovieController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/simple/{id}")
+    @GetMapping("/movie/{id}")
     public User findById(@PathVariable Long id) {
         return restTemplate.getForObject(userServicePath + id, User.class);
     }

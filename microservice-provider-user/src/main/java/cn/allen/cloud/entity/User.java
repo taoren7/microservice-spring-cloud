@@ -6,6 +6,14 @@ import java.math.BigDecimal;
 @Entity
 public class User {
 
+    public User() {
+    }
+
+    public User(Long id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
